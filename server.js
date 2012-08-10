@@ -1,13 +1,11 @@
-var http = require('http');
-var express = require('express');
-var app = express();
+var http = require('http'),
+    express = require('express'),
+    app = express(),
+    apiServer = require('./api/server.js');
+    
 var port = process.env.PORT || 8080;
 http.createServer(app).listen(port);
 console.log('Listening on port ' + port);
-app.set('jsonp callback', true);
-app.get('/api/:id', function(req, res) {
-    console.log('Received request for: ' + req.param('somedata'));
-    res.header('Content-Type', 'application/json');
-    res.header('Charset', 'utf-8');
-    res.send(req.query.callback + '({"something": "rather", "more": "pork", "tua": "tara"});');
-});
+
+app.use('/api', apiServer); // Mount the HTTP API on the URL space /api
+app.use(express.static(__dirname + '/static')); // For other requests, just serve /static

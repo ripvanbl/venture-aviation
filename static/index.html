@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Venture Aviation</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        
+        
+        <!-- Make mobile browsers use a mobile-sized layout -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    </head>
+    <body>
+        <h1>
+            <a href="/">Venture Aviation</a>
+        </h1>
+        <div>
+            <div id="make"></div>
+            <div id="model"></div>
+            <div id="nnumber"></div>
+            <script type="text/javascript">
+                $(function() {
+                  $.get('/api/aircraft/test') 
+                  .done(function(data) {
+                      $('#make').html(data.make);
+                      $('#model').html(data.model);
+                      $('#nnumber').html(data.nnumber);
+                  })
+                  .fail(function () {
+                    $('#make').html('unknown');
+                    $('#model').html('unknown');
+                    $('#nnumber').html('unknown');
+                  });
+                });
+            </script>
+        </div>
+    </body>
+</html>
