@@ -1,7 +1,9 @@
 var http = require('http');
 var express = require('express');
 var app = express();
-http.createServer(app).listen(process.env.port || 8080);
+var port = process.env.PORT || 8080;
+http.createServer(app).listen(port);
+console.log('Listening on port ' + port);
 app.set('jsonp callback', true);
 app.get('/api/:id', function(req, res) {
     console.log('Received request for: ' + req.param('somedata'));
