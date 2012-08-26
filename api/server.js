@@ -58,7 +58,7 @@ app.put('/aircraft/:id', function(req, res) {
 });
 
 // Test data
-console.log('Adding new aircraft.');
-repo.save(new aircraft({ make: 'Beechcraft', model: 'Bonanza', nnumber: 'N12345'}));
+//console.log('Adding new aircraft.');
+//repo.save(new aircraft({ make: 'Beechcraft', model: 'Bonanza', nnumber: 'N12345'}));
 
 console.log('Loaded API Server');
