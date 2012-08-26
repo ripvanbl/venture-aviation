@@ -1,9 +1,9 @@
+var mongoose = require('mongoose');
 
-function aircraft(id, data) {
-    this.id = id;
-    this.make = data.make || '';
-    this.model = data.model || '';
-    this.nnumber = data.nnumber || '';
-}
+var aircraft = new mongoose.Schema({
+  make: { type: String, required: true },
+  model: { type: String, required: true },
+  nnumber: { type: String, required: false }
+});
 
-module.exports = aircraft;
+module.exports = mongoose.model('aircraft', aircraft);

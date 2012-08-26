@@ -7,6 +7,12 @@
         <link rel="stylesheet" href="styles/base.css" />
         <link rel="stylesheet" href="styles/skeleton.css" />
         <link rel="stylesheet" href="styles/layout.css" />
+        <style type="text/css">
+            td, th {padding: 2px 4px;}
+            th {font-weight: bold;}
+            tr:nth-child(even) {background: #ccc;}
+            tr:nth-child(odd) {background: #fff;}
+        </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
                 
         <!-- Make mobile browsers use a mobile-sized layout -->
@@ -24,25 +30,84 @@
                 <p>Venture Aviation is an online collaboration tool which helps to bring together aircraft owners, mechanics and people looking to charter an aircraft.</p>
             </div>
             <div class="two-thirds column">
-                <div id="make">Make: <span></span></div>
-                <div id="model">Model: <span></span></div>
-                <div id="nnumber">N-Number: <span></span></div>
-                <script type="text/javascript">
-                    $(function() {
-                      $.get('/api/aircraft/test') 
-                      .done(function(data) {
-                          $('#make span').html(data.make);
-                          $('#model span').html(data.model);
-                          $('#nnumber span').html(data.nnumber);
-                      })
-                      .fail(function () {
-                        $('#make span').html('unknown');
-                        $('#model span').html('unknown');
-                        $('#nnumber span').html('unknown');
-                      });
-                    });
-                </script>
+                <form id="newAircraft" method="post">
+                    <fieldset>
+                        <legend>Add a new aircraft</legend>
+                        <div>
+                            <label>Make:</label>
+                            <input id="make" type="text" />
+                        </div>
+                        <div>
+                            <label>Model:</label>
+                            <input id="model" type="text" />
+                        </div>
+                        <div>
+                            <label>N-Number:</label>
+                            <input id="nnumber" type="text" />
+                        </div>
+                        <div>
+                            <input type="submit" value="Add" />
+                            <div id="postMessage"></div>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <fieldset id="currentAircraft">
+                    <legend>Current Aircraft</legend>
+                    <div id="fetchErrors"></div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Make</th>
+                                <th>Model</th>
+                                <th>N-Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </fieldset>
             </div>
         </div>
+
+        <script type="text/javascript">
+            $(function() {
+                $.get('/api/aircraft').done(function(data) {
+                    var aircraftList = $('#currentAircraft table tbody');
+                    if(data && data.length != 0) {
+                        $.each(data, function(key, value) {
+                            aircraftList.append('<tr><td>' + value.make + '</td><td>' + value.model + '</td><td>' + value.nnumber + '</td></tr>');
+                        });
+                    }
+                    else {
+                        $('#fetchErrors').html('There are currently no aircraft.');
+                    }
+                }).fail(function() {
+                    $('#fetchErrors').html('Could not get the list of aircraft.');
+                });
+            });
+
+            $('form[id="newAircraft"]').submit(function() {
+                $.post('/api/aircraft', {
+                    make: $('input[id="make"]').val(),
+                    model: $('input[id="model"]').val(),
+                    nnumber: $('input[id="nnumber"]').val()
+                }).done(function(data) {
+                    if(data) {
+                        $('#postMessage').html('Yay, new aircraft: ' + data._id);
+                        var aircraftList = $('#currentAircraft table tbody');
+                        aircraftList.append('<tr><td>' + data.make + '</td><td>' + data.model + '</td><td>' + data.nnumber + '</td></tr>');
+                    }
+                    else {
+                        $('#postMessage').html('Hmmm ... something did not go right.');
+
+                    }
+                }).fail(function() {
+                    $('#postMessage').html('Failed to add aircraft.');
+                });
+
+                return false;
+            });
+        </script>
     </body>
 </html>
