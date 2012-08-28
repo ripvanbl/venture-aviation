@@ -1,31 +1,31 @@
-var mongoose = require('mongoose'),
+var Config = require('./config.js'),
+    mongoose = require('mongoose'),
     aircraft = require('./models/aircraft.js');
 
-//mongoose.connect('mongodb://localhost/ventureaviation');
-mongoose.connect('mongodb://ventureaviation:va-2012@ds037387.mongolab.com:37387/heroku_app6608479');
+var config = new Config();
+mongoose.connect(config.dbconn);
 
 exports.load = function(id, callback) {
-    
-        if(id) {
-            console.log('Getting aircraft by id.');
-            aircraft.findById(id, function(err, data) {
-                if(!err) {
-                    console.dir(data);
+    if(id) {
+        console.log('Getting aircraft by id.');
+        aircraft.findById(id, function(err, data) {
+            if(!err) {
+                console.dir(data);
 
-                    if(typeof callback === 'function') {
-                        callback.call(this, [data]);
-                    }
+                if(typeof callback === 'function') {
+                    callback.call(this, data);
                 }
-                else {
-                    console.log('Failed to get aircraft by id.');
+            }
+            else {
+                console.log('Failed to get aircraft by id.');
 
-                    if(typeof callback === 'function') {
-                        callback.call(this, null);
-                    }
+                if(typeof callback === 'function') {
+                    callback.call(this, null);
                 }
-            });
-        }
-
+            }
+        });
+    }
+    else {
         console.log('Getting all aircraft.');
         aircraft.find(function(err, data) {
             if(!err) {
@@ -43,6 +43,7 @@ exports.load = function(id, callback) {
                 }
             }
         });
+    }
 };
 
 exports.save = function(aircraft, callback) {

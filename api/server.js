@@ -45,15 +45,24 @@ app.post('/aircraft', function(req, res) {
 });
 
 app.put('/aircraft/:id', function(req, res) {
-    var item = repo.load(req.params.id);
-    item.make = req.body.make;
-    item.model = req.body.model;
-    item.nnumber = req.body.nnumber;
+    repo.load(req.params.id, function(item) {
+        item.make = req.body.make;
+        item.model = req.body.model;
+        item.nnumber = req.body.nnumber;
 
-    repo.save(item, function(result) {
-        res.header('Content-Type', 'application/json');
-        res.header('Charset', 'utf-8');
-        res.send(result, 200);
+        repo.save(item, function(result) {
+            res.header('Content-Type', 'application/json');
+            res.header('Charset', 'utf-8');
+            res.send(result, 200);
+        });
+    });
+});
+
+app.delete('/aircraft/:id', function(req, res) {
+    repo.load(req.params.id, function(item) {
+        repo.remove(item, function () {
+            res.send(200);
+        });
     });
 });
 
