@@ -9,7 +9,10 @@ module.exports = function(){
             break;
         default:
             return {
-              dbconn: 'mongodb://localhost/ventureaviation'
+               dbconn: 'mongodb://ventureaviation:va-2012@ds037387.mongolab.com:37387/heroku_app6608479'
             };
     }
 };
+
+//'mongodb://ventureaviation:va-2012@ds037387.mongolab.com:37387/heroku_app6608479'
+//'mongodb://localhost/ventureaviation'
