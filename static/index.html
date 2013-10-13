@@ -1,42 +1,24 @@
 <!DOCTYPE html>
 
-<html lang="en" ng-app="main">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <title>Venture Aviation</title>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="styles/base.css" />
-        <link rel="stylesheet" href="styles/skeleton.css" />
-        <link rel="stylesheet" href="styles/layout.css" />
-        <style type="text/css">
-            td, th {padding: 2px 4px;}
-            th {font-weight: bold;}
-            tr:nth-child(even) {background: #ccc;}
-            tr:nth-child(odd) {background: #fff;}
-        </style>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
-        <script src="http://code.angularjs.org/angular-resource-1.0.1.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/aircraft.js"></script>
+        <link rel="stylesheet" href="//cdn.kendostatic.com/2013.1.514/styles/kendo.common.min.css" />
+        <link rel="stylesheet" href="//cdn.kendostatic.com/2013.1.514/styles/kendo.default.min.css" />
+        <script src="//code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="//cdn.kendostatic.com/2013.1.514/js/kendo.all.min.js"></script>
                 
         <!-- Make mobile browsers use a mobile-sized layout -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     </head>
     <body>
-        <div class="container">
-            <div class="sixteen columns">
-                <h1 class="remove-bottom" style="margin-top: 40px">Venture Aviation</h1>
-                <h5>Version 0.0.1</h5>
-                <hr />
-            </div>
-            <div class="one-third column">
-                <h3>About Venture Aviation?</h3>
-                <p>Venture Aviation is an online collaboration tool which helps to bring together aircraft owners, mechanics and people looking to charter an aircraft.</p>
-            </div>
-            <div class="two-thirds column">
-                <div ng-view></div>
-            </div>
-        </div>
+        <h1>Brandon Lind</h1>
+        <div id="app"></div>
+        <script src="js/templateLoader.js"></script>
+        <script src="js/router.js"></script>
+        <script src="js/views/main.js"></script>
+        <script src="js/presenter.js"></script>
     </body>
 </html>
