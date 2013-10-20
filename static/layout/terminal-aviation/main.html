@@ -47,7 +47,7 @@
                     <span class="glyphicon glyphicon-envelope pull-left"></span>
                     <span class="input-group-addon-label">Your email</span>
                 </span>
-                <input type="email" class="form-control" placeholder="Your email...">
+                <input data-bind="value:email" type="email" class="form-control" placeholder="Your email...">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">
@@ -64,7 +64,7 @@
                 <input data-bind="value: getFormattedDepartDate, events:{focus:openDatePicker}" class="form-control" placeholder="Select a depature date...">
             </div>
             <div class="input-group-actions">
-                <button data-bind="enabled:isValidBidForm" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-bullhorn"></span> Start the Bidding!</button>
+                <button data-bind="enabled:isValidBidForm, click:submitBid" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-bullhorn"></span> Start the Bidding!</button>
             </div>
         </div>
         <div class="panel-footer">

@@ -40,9 +40,9 @@
                 });
                 
                 kWin = $win.kendoWindow({
-                    actions: false,
                     modal: true,
-                    position: {top:0,left:0}
+                    position: {top:0,left:0},
+                    title: 'Choose a date'
                 }).data('kendoWindow');
                 
                 kWin.center().open();
@@ -69,7 +69,6 @@
                 };
                 
                 kWin = $win.kendoWindow({
-                    actions: false,
                     activate: function() {
                         $('div:first', $win).css('height', '100%').css('width', '100%');
                         
@@ -111,7 +110,8 @@
                         }
                     },
                     modal: true,
-                    position: {top:0,left:0}
+                    position: {top:0,left:0},
+                    title: 'Choose an airport'
                 }).data('kendoWindow');
                 
                 kWin.center().open().maximize();
@@ -127,6 +127,16 @@
                 
                 return false;
                 
+            },
+            submitBid: function() {
+                var $win;
+                
+                $win = $("<div style='display:none;'><div>If this were real, I'd submit it, but it's not, so I won't.</div></div>").appendTo('body');
+                $win.kendoWindow({
+                    modal: true,
+                    position: {top:0,left:0},
+                    title: 'Request ... not submitted'
+                }).data('kendoWindow').center().open();
             }
         });
         

@@ -9,6 +9,9 @@ body>header, body>footer {color:#999999;}
 .input-group-addon-label {display:inline-block;margin-right:10px;text-align:right;width:100px;}
 .input-group-actions {margin:20px;text-align:center;}
 
+.k-window-titlebar {height: 1.9em;}
+.k-window-actions .k-icon .k-i-close {top: -7px;}
+
 @media only screen and (min-width: 320px) and (max-width: 1024px) and (orientation : landscape) {
     h1 {font-size:16px;}
     h2 {font-size:14px;}

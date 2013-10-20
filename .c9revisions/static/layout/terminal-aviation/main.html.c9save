@@ -62,3 +62,5 @@
 {"ts":1382239714598,"patch":[[{"diffs":[[0,"  <input"],[1," data-bind=\"value: getIATACode, events:{focus:openMap}\""],[0," class=\""]],"start1":2863,"start2":2863,"length1":16,"length2":71}]],"length":3851,"saved":false}
 {"ts":1382239744735,"patch":[[{"diffs":[[0,"ue: "],[-1,"getIATACode"],[1,"iata"],[0,", ev"]],"start1":2886,"start2":2886,"length1":19,"length2":12}]],"length":3844,"saved":false}
 {"ts":1382242203997,"patch":[[{"diffs":[[0,"ue: "],[-1,"iata"],[1,"airport"],[0,", ev"]],"start1":2886,"start2":2886,"length1":12,"length2":15}]],"length":3847,"saved":false}
+{"ts":1382243117729,"patch":[[{"diffs":[[0,"  <input"],[1," data-bind=\"value:email\""],[0," type=\"e"]],"start1":2486,"start2":2486,"length1":16,"length2":40}]],"length":3871,"saved":false}
+{"ts":1382243165003,"patch":[[{"diffs":[[0,"dBidForm"],[1,", click:submitBid"],[0,"\" class="]],"start1":3565,"start2":3565,"length1":16,"length2":33}]],"length":3888,"saved":false}
