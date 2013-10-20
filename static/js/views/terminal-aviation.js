@@ -2,8 +2,8 @@
     window.bl = window.bl || {};
     window.bl.views = window.bl.views || {};
     
-    window.bl.views.Main = function(templateId, options) {
-        var view, 
+    window.bl.views.TerminalAviation = function(templateId, options) {
+        var view,
         settings = $.extend({}, options);
         
         view = new kendo.View(templateId);

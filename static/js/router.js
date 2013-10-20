@@ -12,6 +12,7 @@
         });
         
         router.route('/', settings.noRouteCallback);
+        router.route('ta', settings.terminalAviationCallback)
         
         return router;
     };
