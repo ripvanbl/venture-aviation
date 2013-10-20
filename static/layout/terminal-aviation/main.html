@@ -54,17 +54,17 @@
                     <span class="glyphicon glyphicon-map-marker pull-left"></span>
                     <span class="input-group-addon-label">Leaving from</span>
                 </span>
-                <input class="form-control" placeholder="Select an airport...">
+                <input data-bind="value: airport, events:{focus:openMap}" class="form-control" placeholder="Select an airport...">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar pull-left"></span>
                     <span class="input-group-addon-label">Wheels up on</span>
                 </span>
-                <input class="form-control" placeholder="Select a depature date...">
+                <input data-bind="value: getFormattedDepartDate, events:{focus:openDatePicker}" class="form-control" placeholder="Select a depature date...">
             </div>
             <div class="input-group-actions">
-                <button class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-bullhorn"></span> Start the Bidding!</button>
+                <button data-bind="enabled:isValidBidForm" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-bullhorn"></span> Start the Bidding!</button>
             </div>
         </div>
         <div class="panel-footer">
