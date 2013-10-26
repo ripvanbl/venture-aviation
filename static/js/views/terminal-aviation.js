@@ -24,7 +24,7 @@
                 departDate = viewModel.get('departDate');
                 email = viewModel.get('email');
                 
-                return airport && email && departDate;
+                return airport && departDate && email;
             },
             openDatePicker: function() {
                 var $win, kWin;
@@ -131,12 +131,17 @@
             submitBid: function() {
                 var $win;
                 
-                $win = $("<div style='display:none;'><div>If this were real, I'd submit it, but it's not, so I won't.</div></div>").appendTo('body');
-                $win.kendoWindow({
-                    modal: true,
-                    position: {top:0,left:0},
-                    title: 'Request ... not submitted'
-                }).data('kendoWindow').center().open();
+                if (viewModel.isValidBidForm) {
+                    $win = $("<div style='display:none;'><div>If this were real, I'd submit it, but it's not, so I won't.</div></div>").appendTo('body');
+                    $win.kendoWindow({
+                        modal: true,
+                        position: {
+                            top: 0,
+                            left: 0
+                        },
+                        title: 'Request ... not submitted'
+                    }).data('kendoWindow').center().open();
+                }
             }
         });
         
