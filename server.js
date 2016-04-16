@@ -2,8 +2,8 @@ var http = require('http'),
     express = require('express'),
     app = express(),
     apiServer = require('./api/server.js'),
-    port = process.env.PORT || 8080,
-    host = process.env.IP || '0.0.0.0';
+    port = process.env.PORT,
+    host = process.env.IP;
 
 http.createServer(app).listen(port, host);
 console.log('HTTP listening at ' + host + ' on port ' + port);
