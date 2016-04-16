@@ -1,3 +1,7 @@
+# Cloud9
+.c9
+.c9revisions
+
 # Node.js
 node_modules\*
 node_modules/*
