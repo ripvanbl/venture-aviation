@@ -6,7 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = {
-  entry: "./static/app.js",
+  entry: "./src/app.js",
   output: {
     path: __dirname + '/public',
     filename: "bundle.js"
@@ -38,13 +38,13 @@ module.exports = {
 
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      template: './static/index.html',
+      template: './src/index.html',
       inject: 'body'
     }),
 
     // https://github.com/kevlened/copy-webpack-plugin
     // new CopyWebpackPlugin([{
-    //   from: __dirname + '/static/images',
+    //   from: __dirname + '/src/images',
     //   to: 'images'
     // }]),
 
