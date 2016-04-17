@@ -9,4 +9,4 @@ http.createServer(app).listen(port, host);
 console.log('HTTP listening at ' + host + ' on port ' + port);
 
 //app.use('/api', apiServer); // Mount the HTTP API on the URL space /api
-app.use(express.static(__dirname + '/public')); // For other requests, just serve /public
+app.use(express.static(__dirname + '/../public')); // For other requests, just serve /public
