@@ -1,14 +1,14 @@
 'use strict';
 
 var webpack = require('webpack');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+//var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = {
   entry: "./static/app.js",
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/public',
     filename: "bundle.js"
   },
   module: {
