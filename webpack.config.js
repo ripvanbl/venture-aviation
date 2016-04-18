@@ -1,7 +1,7 @@
 'use strict';
 
 var webpack = require('webpack');
-//var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
@@ -22,10 +22,6 @@ module.exports = {
       test: /\.html$/,
       loader: "html-loader"
     }, {
-      // https://github.com/webpack/file-loader
-      test: /\.(png|jpg|gif)$/,
-      loader: "file-loader?name=img/img-[hash:6].[ext]"
-    }, {
       // https://github.com/webpack/url-loader
       test: /\.(png|jpg|gif)$/,
       loader: "url-loader?limit=10000&name=img/img-[hash:6].[ext]"
@@ -43,10 +39,10 @@ module.exports = {
     }),
 
     // https://github.com/kevlened/copy-webpack-plugin
-    // new CopyWebpackPlugin([{
-    //   from: __dirname + '/client/assets/img',
-    //   to: 'img'
-    // }]),
+    new CopyWebpackPlugin([{
+       from: __dirname + '/client/assets/img/favicon.ico',
+       to: 'favicon.ico'
+     }]),
 
     // https://github.com/jeffling/ng-annotate-webpack-plugin
     new ngAnnotatePlugin({

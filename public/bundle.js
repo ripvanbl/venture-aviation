@@ -52,12 +52,14 @@
 	var uirouter = __webpack_require__(7);
 	var routing = __webpack_require__(8);
 	var layoutModule = __webpack_require__(9);
-	var homeModule = __webpack_require__(13);
+	var homeModule = __webpack_require__(14);
+	var taModule = __webpack_require__(17);
 
 	angular.module('app', [
 	    uirouter, 
 	    layoutModule.name,
-	    homeModule.name
+	    homeModule.name,
+	    taModule.name
 	  ])
 	  .config(routing);
 
@@ -77,8 +79,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./main.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./main.css");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./main.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./main.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -96,7 +98,7 @@
 
 
 	// module
-	exports.push([module.id, "body {background-color:#303030;margin:20px;}\n.layout header, .layout footer {color:#999999;margin:0 auto;max-width:1000px;}\n.layout header a:hover {text-decoration: none;}\n\n#app {background-color:#e9e9e9;border-radius:5px;margin:20px auto;max-width:1000px;padding:10px;}\n#about-this-site p {text-align: justify;}\n#start-terminal-aviation {margin:40px auto;width:200px;}\n\n.profile-picture {border-radius: 6px;}\n.input-group {margin-bottom:2px;}\n.input-group-addon-label {display:inline-block;margin-right:10px;text-align:right;width:100px;}\n.input-group-actions {margin:20px;text-align:center;}\n\n@media only screen and (min-width: 320px) and (max-width: 1024px) and (orientation : landscape) {\n    h1 {font-size:16px;}\n    h2 {font-size:14px;}\n}\n\n@media only screen and (max-width: 480px) {\n    h1 {font-size:16px;}\n    h2 {font-size:14px;}\n    .input-group-addon-label {display:none;}\n}", ""]);
+	exports.push([module.id, "body {background-color:#303030;}\n.margin-top{margin-top:20px;}\n.margin-bottom{margin-bottom:20px;}", ""]);
 
 	// exports
 
@@ -35699,9 +35701,11 @@
 
 	'use strict';
 
+	__webpack_require__(10);
+
 	var angular = __webpack_require__(5);
 	var uirouter = __webpack_require__(7);
-	var routes = __webpack_require__(10);
+	var routes = __webpack_require__(12);
 
 	module.exports = 
 	  angular
@@ -35713,6 +35717,46 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(11);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./layout.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./layout.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".layout header, .layout footer {color:#999999;}\n.layout header a:hover {text-decoration: none;}\n.layout .profile-picture {border-radius: 6px;}\n.layout .content {background-color:#e9e9e9;border-radius:6px;}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/*@ngInject*/
 	module.exports = function($stateProvider) {
 	  'use strict';
@@ -35722,7 +35766,7 @@
 	    abstract: true,
 	    views: {
 	      layout: {
-	        template: __webpack_require__(11),
+	        template: __webpack_require__(13),
 	      }
 	    }
 	  });
@@ -35730,26 +35774,20 @@
 	module.exports.$inject = ["$stateProvider"];
 
 /***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "<header>\n  <h1>\n      <a href=\"/\">\n        <img src=\"https://www.gravatar.com/avatar/6fb8d2f4192627b7985016d486bfec04?s=80&d=retro\" alt=\"Brandon Lind\" class=\"profile-picture\" /> \n        Brandon Lind\n      </a>\n    </h1>\n  <p>... you’re probably in the wrong place ;)</p>\n</header>\n\n<div id=\"app\" data-ui-view=\"\"></div>\n\n<footer>\n  <small>&copy; 2010 Brandon Lind</small> &nbsp;\n  <a href=\"https://www.linkedin.com/pub/brandon-lind/10/22b/b97\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\"https://static.licdn.com/scds/common/u/img/webpromo/btn_in_20x15.png\" width=\"20\" height=\"15\" alt=\"View my LinkedIn profile\" style=\"vertical-align:middle;\" border=\"0\" /></a> &nbsp;\n  <a href=\"https://github.com/ripvanbl\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\"" + __webpack_require__(12) + "\" alt=\"View my Github Repos\" /></a>\n</footer>";
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "img/img-f2b363.png";
-
-/***/ },
 /* 13 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"layout\">\n  <header class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-xs-12\">\n        <h1>\n          <a href=\"/\">\n            <img src=\"https://www.gravatar.com/avatar/6fb8d2f4192627b7985016d486bfec04?s=80&d=retro\" alt=\"Brandon Lind\" class=\"profile-picture\" /> \n            Brandon Lind\n          </a>\n        </h1>\n        <p>... you’re probably in the wrong place ;)</p>\n      </div>\n    </div>\n  </header>\n  \n  <div class=\"container content\" data-ui-view=\"\"></div>\n  \n  <footer class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-xs-12\">\n        <small>&copy; 2010 Brandon Lind</small> &nbsp;\n        <a href=\"https://www.linkedin.com/pub/brandon-lind/10/22b/b97\" target=\"_blank\" style=\"text-decoration:none;\"><i class=\"fa fa-linkedin-square\" aria-hidden=\"true\"></i></a> &nbsp;\n        <a href=\"https://github.com/ripvanbl\" target=\"_blank\" style=\"text-decoration:none;\"><i class=\"fa fa-github\" aria-hidden=\"true\"></i></a>\n      </div>\n    </div>\n  </footer>\n</div>";
+
+/***/ },
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var angular = __webpack_require__(5);
 	var uirouter = __webpack_require__(7);
-	var routes = __webpack_require__(14);
+	var routes = __webpack_require__(15);
 
 	module.exports = 
 	  angular
@@ -35758,7 +35796,7 @@
 	  
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*@ngInject*/
@@ -35768,16 +35806,195 @@
 	  $stateProvider
 	    .state('main.home', {
 	      url: '/',
-	      template: __webpack_require__(15)
+	      template: __webpack_require__(16)
 	    });
 	};
 	module.exports.$inject = ["$stateProvider"];
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row\">\n    <div class=\"col-xs-12 col-md-4\">\n        <aside id=\"about-this-site\">\n            <h2>About this site</h2>\n            <p><strong>If you landed here looking for someone named Brandon Lind\n                and he isn’t a software architect / developer, you’re probably in the wrong\n                place ;).</strong></p>\n            <p>I use this site as a sandbox to keep current with emerging technologies\n                and theories in web architecture and software development. As such, it’s\n                usually pretty plain-vanilla, but under the covers, I’m practicing everything\n                from developing using a cloud IDE (such as\n                <a href=\"https://c9.io\" target=\"_blank\">Cloud9</a> or\n                <a href=\"https://koding.com\" target=\"_blank\">Koding</a>) to using\n                <a href=\"https://github.com/\" target=\"_blank\">Github</a> and deploying to\n                <a href=\"https://heroku.com/\" target=\"_blank\">Heroku</a>.</p>\n            <p>The server software also changes constantly. Sometime this site is developed\n                using\n                <a href=\"http://rubyonrails.org/\" target=\"_blank\">Ruby on Rails</a>, sometimes\n                <a href=\"http://nodejs.org/\" target=\"_blank\">Nodejs</a>. Typically for a persistance engine, I stick with\n                <a href=\"http://www.mongodb.org/\"\n                target=\"_blank\">MongoDB</a>.</p>\n            <p>The JavaScript framework also changes constantly, from\n                <a href=\"http://backbonejs.org/\"\n                target=\"_blank\">Backbone</a> to\n                <a href=\"http://knockoutjs.com/\" target=\"_blank\">Knockout</a>,\n                <a href=\"http://www.angularjs.org/\" target=\"_blank\">Angular</a> to\n                <a href=\"http://www.kendoui.com/\" target=\"_blank\">KendoUI</a>, it’s always in flux and a majority of my changes are to this area.</p>\n            \n        </aside>\n    </div>\n    <div class=\"col-xs-12 col-md-8\">\n        <section class=\"well\">\n            <h2>Terminal Aviation</h2>\n            <p>Terminal Aviation is a fictional company which owns and operates an online\n                collaboration portal and marketplace. The goal is to connect aircraft owners\n                with people looking to charter a flight.</p>\n            <p>Future expansion modules:</p>\n            <h3>Mechanics / Maintenance Companies</h3>\n            <blockquote>Independent aircraft mechanics and aircraft maintenance \n                        companies will be able to view and bid on requests for repair.\n            </blockquote>\n            \n            <h3>Aircraft Management</h3>\n            <blockquote>Aircraft management companies will be able to post offers \n                        and view / bid on requests for aircraft management.\n            </blockquote>\n            \n            <h3>Charter Companies</h3>\n            <blockquote>Charter companies will be able to post offers for service and view / bid \n                on requests for charter opportunities.\n            </blockquote>\n            \n            <div id=\"start-terminal-aviation\">\n                <a href=\"/ta\" class=\"btn btn-primary btn-lg\"><span class=\"glyphicon glyphicon-plane\"></span> Start Terminating</a>\n            </div>\n        </section>\n    </div>\n</div>";
+	module.exports = "<div class=\"row\">\n    <div class=\"col-xs-12 col-md-4\">\n        <aside id=\"about-this-site\">\n            <h2>About this site</h2>\n            <p><strong>If you landed here looking for someone named Brandon Lind\n                and he isn’t a software architect / developer, you’re probably in the wrong\n                place ;).</strong></p>\n            <p>I use this site as a sandbox to keep current with emerging technologies\n                and theories in web architecture and software development. As such, it’s\n                usually pretty plain-vanilla, but under the covers, I’m practicing everything\n                from developing using a cloud IDE (such as\n                <a href=\"https://c9.io\" target=\"_blank\">Cloud9</a> or\n                <a href=\"https://koding.com\" target=\"_blank\">Koding</a>) to using\n                <a href=\"https://github.com/\" target=\"_blank\">Github</a> and deploying to\n                <a href=\"https://heroku.com/\" target=\"_blank\">Heroku</a>.</p>\n            <p>The server software also changes constantly. Sometime this site is developed\n                using\n                <a href=\"http://rubyonrails.org/\" target=\"_blank\">Ruby on Rails</a>, sometimes\n                <a href=\"http://nodejs.org/\" target=\"_blank\">Nodejs</a>. Typically for a persistence engine, I stick with\n                <a href=\"http://www.mongodb.org/\"\n                target=\"_blank\">MongoDB</a>.</p>\n            <p>The JavaScript framework also changes constantly, from\n                <a href=\"http://backbonejs.org/\"\n                target=\"_blank\">Backbone</a> to\n                <a href=\"http://knockoutjs.com/\" target=\"_blank\">Knockout</a>,\n                <a href=\"http://www.angularjs.org/\" target=\"_blank\">Angular</a> to\n                <a href=\"http://www.kendoui.com/\" target=\"_blank\">KendoUI</a>, it’s always in flux and a majority of my changes are to this area.</p>\n            \n        </aside>\n    </div>\n    <div class=\"col-xs-12 col-md-8\">\n        <section class=\"well margin-top\">\n            <h2>Terminal Aviation</h2>\n            <p>Terminal Aviation is a fictional company which owns and operates an online\n                collaboration portal and marketplace. The goal is to connect aircraft owners\n                with people looking to charter a flight.</p>\n            <p>Future expansion modules:</p>\n            <h3>Mechanics / Maintenance Companies</h3>\n            <blockquote>Independent aircraft mechanics and aircraft maintenance \n                        companies will be able to view and bid on requests for repair.\n            </blockquote>\n            \n            <h3>Aircraft Management</h3>\n            <blockquote>Aircraft management companies will be able to post offers \n                        and view / bid on requests for aircraft management.\n            </blockquote>\n            \n            <h3>Charter Companies</h3>\n            <blockquote>Charter companies will be able to post offers for service and view / bid \n                on requests for charter opportunities.\n            </blockquote>\n            \n            <div>\n                <a data-ui-sref=\"ta.intro\" class=\"btn btn-primary btn-lg\"><i class=\"fa fa-plane\" aria-hidden=\"true\"></i> Start Terminating</a>\n            </div>\n        </section>\n    </div>\n</div>";
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(27);
+
+	var angular = __webpack_require__(5);
+	var uirouter = __webpack_require__(7);
+	var routes = __webpack_require__(18);
+	var taIntroModule = __webpack_require__(20);
+	var taOwnerModule = __webpack_require__(23);
+
+	module.exports = 
+	  angular
+	    .module('app.ta', [
+	      uirouter, 
+	      taIntroModule.name, 
+	      taOwnerModule.name
+	    ])
+	    .config(routes);
+	  
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*@ngInject*/
+	module.exports = function($stateProvider) {
+	  'use strict';
+
+	  $stateProvider
+	    .state('ta', {
+	      abstract: true,
+	      views: {
+	        layout: {
+	          template: __webpack_require__(19),
+	        }
+	      }
+	    });
+	};
+	module.exports.$inject = ["$stateProvider"];
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"layout terminal-aviation\">\n  <header class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-xs-12\">\n        <h1>\n          <i class=\"fa fa-plane fa-x3\" aria-hidden=\"true\"></i> \n          Terminal Aviation\n        </h1>\n      </div>\n    </div>\n  </header>\n  \n  <div class=\"container content\" data-ui-view=\"\"></div>\n  \n  <footer class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-xs-12\">\n        <small>&copy; Brandon Lind 2016</small>\n      </div>\n    </div>\n  </footer>\n</div>";
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(5);
+	var uirouter = __webpack_require__(7);
+	var routes = __webpack_require__(21);
+
+	module.exports = 
+	  angular
+	    .module('app.ta.intro', [uirouter])
+	    .config(routes);
+	  
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*@ngInject*/
+	module.exports = function($stateProvider) {
+	  'use strict';
+	  
+	  $stateProvider
+	    .state('ta.intro', {
+	      url: '/ta',
+	      template: __webpack_require__(22)
+	    });
+	};
+	module.exports.$inject = ["$stateProvider"];
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1>Intro terminal aviation.</h1>\n<p><a data-ui-sref=\"ta.owner\">Owners</a></p>";
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(5);
+	var uirouter = __webpack_require__(7);
+	var routes = __webpack_require__(24);
+
+	module.exports = 
+	  angular
+	    .module('app.ta.owner', [uirouter])
+	    .config(routes)
+	    .directive('blTaOwner', __webpack_require__(25));
+	  
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	/*@ngInject*/
+	module.exports = function($stateProvider) {
+	  'use strict';
+	  
+	  $stateProvider
+	    .state('ta.owner', {
+	      url: '/ta/owner',
+	      template: '<div data-bl-ta-owner=""></div>'
+	    });
+	};
+	module.exports.$inject = ["$stateProvider"];
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = function() {
+	  return {
+	    template: __webpack_require__(26)
+	  };
+	}
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1>Owner Module</h1>";
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(28);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./terminalAviation.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./terminalAviation.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);
