@@ -1,17 +1,13 @@
-var Config = require('./config.js'),
-    mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
     aircraft = require('./models/aircraft.js');
 
-var config = new Config();
-mongoose.connect(config.dbconn);
+mongoose.connect(process.env.MONGODB_MONGOLAB_URI);
 
 exports.load = function(id, callback) {
     if(id) {
         console.log('Getting aircraft by id.');
         aircraft.findById(id, function(err, data) {
             if(!err) {
-                console.dir(data);
-
                 if(typeof callback === 'function') {
                     callback.call(this, data);
                 }
@@ -29,8 +25,6 @@ exports.load = function(id, callback) {
         console.log('Getting all aircraft.');
         aircraft.find(function(err, data) {
             if(!err) {
-                console.dir(data);
-
                 if(typeof callback === 'function') {
                     callback.call(this, data);
                 }

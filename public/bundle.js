@@ -35823,13 +35823,13 @@
 
 	'use strict';
 
-	__webpack_require__(27);
+	__webpack_require__(18);
 
 	var angular = __webpack_require__(5);
 	var uirouter = __webpack_require__(7);
-	var routes = __webpack_require__(18);
-	var taIntroModule = __webpack_require__(20);
-	var taOwnerModule = __webpack_require__(23);
+	var routes = __webpack_require__(20);
+	var taIntroModule = __webpack_require__(22);
+	var taOwnerModule = __webpack_require__(25);
 
 	module.exports = 
 	  angular
@@ -35845,125 +35845,10 @@
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*@ngInject*/
-	module.exports = function($stateProvider) {
-	  'use strict';
-
-	  $stateProvider
-	    .state('ta', {
-	      abstract: true,
-	      views: {
-	        layout: {
-	          template: __webpack_require__(19),
-	        }
-	      }
-	    });
-	};
-	module.exports.$inject = ["$stateProvider"];
-
-/***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"layout terminal-aviation\">\n  <header class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-xs-12\">\n        <h1>\n          <i class=\"fa fa-plane fa-x3\" aria-hidden=\"true\"></i> \n          Terminal Aviation\n        </h1>\n      </div>\n    </div>\n  </header>\n  \n  <div class=\"container content\" data-ui-view=\"\"></div>\n  \n  <footer class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-xs-12\">\n        <small>&copy; Brandon Lind 2016</small>\n      </div>\n    </div>\n  </footer>\n</div>";
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var angular = __webpack_require__(5);
-	var uirouter = __webpack_require__(7);
-	var routes = __webpack_require__(21);
-
-	module.exports = 
-	  angular
-	    .module('app.ta.intro', [uirouter])
-	    .config(routes);
-	  
-
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*@ngInject*/
-	module.exports = function($stateProvider) {
-	  'use strict';
-	  
-	  $stateProvider
-	    .state('ta.intro', {
-	      url: '/ta',
-	      template: __webpack_require__(22)
-	    });
-	};
-	module.exports.$inject = ["$stateProvider"];
-
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	module.exports = "<h1>Intro terminal aviation.</h1>\n<p><a data-ui-sref=\"ta.owner\">Owners</a></p>";
-
-/***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var angular = __webpack_require__(5);
-	var uirouter = __webpack_require__(7);
-	var routes = __webpack_require__(24);
-
-	module.exports = 
-	  angular
-	    .module('app.ta.owner', [uirouter])
-	    .config(routes)
-	    .directive('blTaOwner', __webpack_require__(25));
-	  
-
-/***/ },
-/* 24 */
-/***/ function(module, exports) {
-
-	/*@ngInject*/
-	module.exports = function($stateProvider) {
-	  'use strict';
-	  
-	  $stateProvider
-	    .state('ta.owner', {
-	      url: '/ta/owner',
-	      template: '<div data-bl-ta-owner=""></div>'
-	    });
-	};
-	module.exports.$inject = ["$stateProvider"];
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = function() {
-	  return {
-	    template: __webpack_require__(26)
-	  };
-	}
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	module.exports = "<h1>Owner Module</h1>";
-
-/***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
-
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(28);
+	var content = __webpack_require__(19);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -35983,7 +35868,7 @@
 	}
 
 /***/ },
-/* 28 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -35995,6 +35880,121 @@
 
 	// exports
 
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*@ngInject*/
+	module.exports = function($stateProvider) {
+	  'use strict';
+
+	  $stateProvider
+	    .state('ta', {
+	      abstract: true,
+	      views: {
+	        layout: {
+	          template: __webpack_require__(21),
+	        }
+	      }
+	    });
+	};
+	module.exports.$inject = ["$stateProvider"];
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"layout terminal-aviation\">\n  <header class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-xs-12\">\n        <h1>\n          <i class=\"fa fa-plane fa-x3\" aria-hidden=\"true\"></i> \n          Terminal Aviation\n        </h1>\n      </div>\n    </div>\n  </header>\n  \n  <div class=\"container content\" data-ui-view=\"\"></div>\n  \n  <footer class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-xs-12\">\n        <small>&copy; Brandon Lind 2016</small>\n      </div>\n    </div>\n  </footer>\n</div>";
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(5);
+	var uirouter = __webpack_require__(7);
+	var routes = __webpack_require__(23);
+
+	module.exports = 
+	  angular
+	    .module('app.ta.intro', [uirouter])
+	    .config(routes);
+	  
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*@ngInject*/
+	module.exports = function($stateProvider) {
+	  'use strict';
+	  
+	  $stateProvider
+	    .state('ta.intro', {
+	      url: '/ta',
+	      template: __webpack_require__(24)
+	    });
+	};
+	module.exports.$inject = ["$stateProvider"];
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1>Intro terminal aviation.</h1>\n<p><a data-ui-sref=\"ta.owner\">Owners</a></p>";
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(5);
+	var uirouter = __webpack_require__(7);
+	var routes = __webpack_require__(26);
+
+	module.exports = 
+	  angular
+	    .module('app.ta.owner', [uirouter])
+	    .config(routes)
+	    .directive('blTaOwner', __webpack_require__(27));
+	  
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	/*@ngInject*/
+	module.exports = function($stateProvider) {
+	  'use strict';
+	  
+	  $stateProvider
+	    .state('ta.owner', {
+	      url: '/ta/owner',
+	      template: '<div data-bl-ta-owner=""></div>'
+	    });
+	};
+	module.exports.$inject = ["$stateProvider"];
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = function() {
+	  return {
+	    template: __webpack_require__(28)
+	  };
+	}
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1>Owner Module</h1>";
 
 /***/ }
 /******/ ]);
