@@ -4,7 +4,7 @@ module.exports = function($stateProvider) {
   
   $stateProvider
     .state('ta.intro', {
-      url: '/ta',
+      url: '/',
       template: require('./intro.html')
     });
 };

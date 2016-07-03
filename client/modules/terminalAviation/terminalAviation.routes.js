@@ -4,6 +4,7 @@ module.exports = function($stateProvider) {
 
   $stateProvider
     .state('ta', {
+      url: '/ta',
       abstract: true,
       views: {
         layout: {

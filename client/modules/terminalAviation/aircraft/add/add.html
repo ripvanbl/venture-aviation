@@ -1,0 +1,28 @@
+<form role="form" class="aircraft-add modal-content">
+  <header>
+    <h1>Add an aircraft</h1>
+  </header>
+  <fieldset>
+    <div class="form-group">
+      <label for="aircraft-add-name">Name</label>
+      <input type="text" id="aircraft-add-name" class="form-control" placeholder="Aircraft name" />
+    </div>
+    <div class="form-group">
+      <label for="aircraft-add-number">Number</label>
+      <input type="text" id="aircraft-add-number" class="form-control" placeholder="Aircraft number" />
+    </div>
+    <div class="form-group">
+      <label for="aircraft-add-description">Description</label>
+      <textarea id="aircraft-add-description" class="form-control" rows="3" placeholder="Aircraft description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="aircraft-add-active">Is Active</label>
+      <input type="checkbox" id="aircraft-add-active" value="" />
+      <span class="help-block">Used to determine if an aircraft is in active rotation.</span>
+    </div>
+  </fieldset>
+  <footer class="text-right">
+    <button type="button" class="btn btn-secondary" data-ng-click="vm.cancel()">Cancel</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </footer>
+</form>

@@ -4,7 +4,7 @@ module.exports = function($stateProvider) {
   
   $stateProvider
     .state('ta.owner', {
-      url: '/ta/owner',
+      url: '/owner',
       template: '<div data-bl-ta-owner=""></div>'
     });
 };

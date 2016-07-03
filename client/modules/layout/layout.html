@@ -1,20 +1,28 @@
 <div class="layout">
-  <header class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h1>
-          <a href="/">
-            <img src="https://www.gravatar.com/avatar/6fb8d2f4192627b7985016d486bfec04?s=80&d=retro" alt="Brandon Lind" class="profile-picture" /> 
-            Brandon Lind
-          </a>
-        </h1>
-        <p>... you’re probably in the wrong place ;)</p>
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" data-ui-sref="main.home">
+          <img src="https://www.gravatar.com/avatar/6fb8d2f4192627b7985016d486bfec04?s=80&d=retro" alt="Brandon Lind" class="profile-picture" /> Brandon Lind
+        </a>
       </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a data-ui-sref="ta.intro">Terminal Aviation</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
     </div>
-  </header>
-  
+  </div>
+
   <div class="container content" data-ui-view=""></div>
-  
+
   <footer class="container">
     <div class="row">
       <div class="col-xs-12">

@@ -1,14 +1,27 @@
+<img src="../../assets/img/plane-601589_1920.jpg" alt="background image" aria-hidden="true" class="bg" />
 <div class="layout terminal-aviation">
-  <header class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h1>
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" data-ui-sref="ta.intro">
           <i class="fa fa-plane fa-x3" aria-hidden="true"></i> 
           Terminal Aviation
-        </h1>
+        </a>
       </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a data-ui-sref="main.home">Brandon Lind</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
     </div>
-  </header>
+  </div>
   
   <div class="container content" data-ui-view=""></div>
   
@@ -19,4 +32,5 @@
       </div>
     </div>
   </footer>
+  
 </div>
