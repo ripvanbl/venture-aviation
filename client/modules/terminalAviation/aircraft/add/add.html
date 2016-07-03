@@ -1,0 +1,32 @@
+<form role="form" class="aircraft-add modal-content">
+  <header>
+    <button type="button" class="close pull-right" aria-hidden="true" data-ng-click="vm.cancel()">&times;</button>
+    <h1>Add an aircraft</h1>
+  </header>
+  <fieldset>
+    <div class="form-group">
+      <label for="aircraft-add-name" class="required">Name</label>
+      <input type="text" id="aircraft-add-name" class="form-control" maxlength="50" required="required" data-ng-model="vm.aircraft.name" />
+      <span class="help-block">Add a name to help distinguish this aircraft.</span>
+    </div>
+    <div class="form-group">
+      <label for="aircraft-add-description">Description</label>
+      <textarea id="aircraft-add-description" class="form-control" rows="3" maxlength="500" data-ng-model="vm.aircraft.description"></textarea>
+      <span class="help-block">Add a short description to help others get to know this aircraft.</span>
+    </div>
+    <div class="form-group">
+      <label for="aircraft-add-registration-id">Registration Identifier</label>
+      <input type="text" id="aircraft-add-registration-id" class="form-control" maxlength="20" data-ng-model="vm.aircraft.registrationId" />
+      <span class="help-block">Tail number or other official registration identifier for this aircraft.</span>
+    </div>
+    <div class="form-group">
+      <label for="aircraft-add-available">Is Available</label>
+      <input type="checkbox" id="aircraft-add-available" data-ng-model="vm.aircraft.isAvailable" />
+      <span class="help-block">Used to determine if an aircraft is in active rotation.</span>
+    </div>
+  </fieldset>
+  <footer class="text-right">
+    <button type="submit" class="btn btn-primary" data-ng-click="vm.save()">Save</button>
+    <button type="button" class="btn btn-default" data-ng-click="vm.cancel()">Cancel</button>
+  </footer>
+</form>
