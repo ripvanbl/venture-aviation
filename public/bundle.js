@@ -35860,8 +35860,8 @@
 	var uirouter = __webpack_require__(7);
 	var routes = __webpack_require__(21);
 	var taAircraft = __webpack_require__(24);
-	var taIntroModule = __webpack_require__(34);
-	var taOwnerModule = __webpack_require__(37);
+	var taIntroModule = __webpack_require__(35);
+	var taOwnerModule = __webpack_require__(38);
 
 	module.exports = 
 	  angular
@@ -35965,7 +35965,7 @@
 	    .config(routes)
 	    .factory('blTaHangerService', __webpack_require__(30))
 	    .factory('blTaAircraftService', __webpack_require__(31))
-	    .directive('blTaAircraftAdd', __webpack_require__(32));
+	    .directive('blTaAircraftAdd', __webpack_require__(33));
 	  
 
 /***/ },
@@ -43706,7 +43706,7 @@
 	    aircraft.id = uuid.v4();
 
 	    if (!aircraft.pics.thumbnail) {
-	      aircraft.pics.thumbnail = __webpack_require__(41);
+	      aircraft.pics.thumbnail = __webpack_require__(32);
 	    }
 
 	    return blTaHangerService.addAircraft(aircraft);
@@ -43718,12 +43718,18 @@
 /* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__.p + "img/img-91c71e.png";
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/*@ngInject*/
 	module.exports = function(blTaAircraftService) {
 	  'use strict';
 	  
 	  return {
-	    template: __webpack_require__(33),
+	    template: __webpack_require__(34),
 	    link: postLink
 	  };
 	  
@@ -43750,20 +43756,20 @@
 	module.exports.$inject = ["blTaAircraftService"];
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	module.exports = "<form role=\"form\" class=\"aircraft-add modal-content\">\n  <header>\n    <button type=\"button\" class=\"close pull-right\" aria-hidden=\"true\" data-ng-click=\"vm.cancel()\">&times;</button>\n    <h1>Add an aircraft</h1>\n  </header>\n  <fieldset>\n    <div class=\"form-group\">\n      <label for=\"aircraft-add-name\" class=\"required\">Name</label>\n      <input type=\"text\" id=\"aircraft-add-name\" class=\"form-control\" maxlength=\"50\" required=\"required\" data-ng-model=\"vm.aircraft.name\" />\n      <span class=\"help-block\">Add a name to help distinguish this aircraft.</span>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"aircraft-add-description\">Description</label>\n      <textarea id=\"aircraft-add-description\" class=\"form-control\" rows=\"3\" maxlength=\"500\" data-ng-model=\"vm.aircraft.description\"></textarea>\n      <span class=\"help-block\">Add a short description to help others get to know this aircraft.</span>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"aircraft-add-registration-id\">Registration Identifier</label>\n      <input type=\"text\" id=\"aircraft-add-registration-id\" class=\"form-control\" maxlength=\"20\" data-ng-model=\"vm.aircraft.registrationId\" />\n      <span class=\"help-block\">Tail number or other official registration identifier for this aircraft.</span>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"aircraft-add-available\">Is Available</label>\n      <input type=\"checkbox\" id=\"aircraft-add-available\" data-ng-model=\"vm.aircraft.isAvailable\" />\n      <span class=\"help-block\">Used to determine if an aircraft is in active rotation.</span>\n    </div>\n  </fieldset>\n  <footer class=\"text-right\">\n    <button type=\"submit\" class=\"btn btn-primary\" data-ng-click=\"vm.save()\">Save</button>\n    <button type=\"button\" class=\"btn btn-default\" data-ng-click=\"vm.cancel()\">Cancel</button>\n  </footer>\n</form>";
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var angular = __webpack_require__(5);
 	var uirouter = __webpack_require__(7);
-	var routes = __webpack_require__(35);
+	var routes = __webpack_require__(36);
 
 	module.exports = 
 	  angular
@@ -43772,7 +43778,7 @@
 	  
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*@ngInject*/
@@ -43782,37 +43788,37 @@
 	  $stateProvider
 	    .state('ta.intro', {
 	      url: '/',
-	      template: __webpack_require__(36)
+	      template: __webpack_require__(37)
 	    });
 	};
 	module.exports.$inject = ["$stateProvider"];
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"intro\">\n  <div class=\"jumbotron\">\n    <h1>Aircraft Owners</h1>\n    <p>Are you looking to maximize your investment in that flying bucket-o-bolts?</p>\n    <div>\n      <a data-ui-sref=\"ta.owner\" class=\"btn btn-primary btn-lg\"><i class=\"fa fa-money\" aria-hidden=\"true\"></i> Learn More</a>\n    </div>\n  </div>\n\n  <div class=\"row\">\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">Mechanics / Maintenance Companies</h3>\n        </div>\n        <div class=\"panel-body\">\n          <p>Independent aircraft mechanics and aircraft maintenance companies will be able to view and bid on requests for repair.</p>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">Aircraft Management</h3>\n        </div>\n        <div class=\"panel-body\">\n          <p>Aircraft management companies will be able to post offers and view / bid on requests for aircraft management.</p>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">Charter Companies</h3>\n        </div>\n        <div class=\"panel-body\">\n          <p>Charter companies will be able to post offers for service and view / bid on requests for charter opportunities.</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var angular = __webpack_require__(5);
 	var uirouter = __webpack_require__(7);
-	var routes = __webpack_require__(38);
+	var routes = __webpack_require__(39);
 	var aircraft = __webpack_require__(24);
 
 	module.exports = 
 	  angular
 	    .module('app.ta.owner', [uirouter, aircraft.name])
 	    .config(routes)
-	    .directive('blTaOwner', __webpack_require__(39));
+	    .directive('blTaOwner', __webpack_require__(40));
 	  
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	/*@ngInject*/
@@ -43828,7 +43834,7 @@
 	module.exports.$inject = ["$stateProvider"];
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*@ngInject*/
@@ -43836,7 +43842,7 @@
 	  'use strict';
 	  
 	  return {
-	    template: __webpack_require__(40),
+	    template: __webpack_require__(41),
 	    controller: controller, 
 	    controllerAs: 'vm',
 	    bindToController: true
@@ -43860,16 +43866,10 @@
 	module.exports.$inject = ["blTaHangerService"];
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"owner\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-md-8\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">Aircraft Dashboard</div>\n        <div class=\"panel-body\" data-ng-if=\"!vm.selectedAircraft\">\n          <p>Select an aircraft from your hanger or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n        </div>\n        <div class=\"panel-body\" data-ng-if=\"vm.selectedAircraft\">\n          <h2>{{vm.selectedAircraft.name}}</h2>\n          <p>{{vm.selectedAircraft.description}}</p>\n\n          <div class=\"list-group\">\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.flights.booked}}</span> Upcoming Flights\n            </a>\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.flights.completed}}</span> Completed Flights\n            </a>\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.maintenance.engineHours}}</span> Engine Hours\n            </a>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">Hanger</div>\n        <div class=\"panel-body\">\n          <p>Select an aircraft to get more detailed information or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n          <div class=\"row\">\n            <div class=\"col-xs-12 col-sm-6\" data-ng-repeat=\"item in vm.aircraft track by $index\">\n              <div class=\"thumbnail\">\n                <img alt=\"{{item.name}}\" title=\"{{item.name}}\" data-ng-src=\"{{item.pics.thumbnail}}\" />\n                <div class=\"caption\">\n                  <h3>{{item.name}}</h3>\n                  <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\" data-ng-click=\"vm.selectAircraft(item)\">Select</a></p>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
-
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "img/img-91c71e.png";
 
 /***/ }
 /******/ ]);

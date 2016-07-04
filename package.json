@@ -11,7 +11,8 @@
   },
   "scripts": {
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
-    "start": "npm run server"
+    "start": "npm run server",
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
   },
   "dependencies": {
     "angular": "1.5.3",
@@ -30,11 +31,18 @@
     "npm": "2.15.1"
   },
   "devDependencies": {
+    "angular-mocks": "1.5.3",
     "copy-webpack-plugin": "2.1.1",
     "css-loader": "0.23.1",
     "file-loader": "0.8.5",
     "html-loader": "0.4.3",
     "html-webpack-plugin": "2.15.0",
+    "jasmine-core": "2.4.1",
+    "karma": "1.1.0",
+    "karma-jasmine": "1.0.2",
+    "karma-phantomjs-launcher": "1.0.1",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-webpack": "1.7.0",
     "ng-annotate-webpack-plugin": "0.1.2",
     "raw-loader": "0.5.1",
     "style-loader": "0.13.1",
