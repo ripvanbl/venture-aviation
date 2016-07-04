@@ -1,9 +1,37 @@
 var mongoose = require('mongoose');
+var lastModPlugin = require('../plugins/lastModified');
 
-var aircraft = new mongoose.Schema({
-  make: { type: String, required: true },
-  model: { type: String, required: true },
-  nnumber: { type: String, required: false }
+var AircraftSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  description: String,
+  isAvailable: Boolean,
+  manufacturer: String,
+  model: String,
+  registrationId: String,
+  year: Number,
+  flightStats: {
+    booked: Number,
+    completed: Number,
+    inProgress: Number
+  },
+  maintenanceStats: {
+    engineHours: Number,
+    lastEngineOverhaul: Date,
+    lastEngineOverhaulHours: Number
+  },
+  pics: {
+    thumbnail: String,
+    front: String,
+    left: String,
+    right: String,
+    back: String,
+    top: String,
+    bottom: String
+  }
 });
 
-module.exports = mongoose.model('aircraft', aircraft);
+AircraftSchema.plugin(lastModPlugin);
+module.exports = mongoose.model('Aircraft', AircraftSchema);
