@@ -10,8 +10,8 @@
     "url": "https://github.com/ripvanbl/venture-aviation.git"
   },
   "scripts": {
-    "dev": "node ./server/server.js & webpack --watch & wait",
-    "start": "node ./server/server.js",
+    "dev": "node ./server/app.js & webpack --watch & wait",
+    "start": "node ./server/app.js",
     "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
   },
   "dependencies": {
