@@ -1,5 +1,5 @@
 /*@ngInject*/
-module.exports = function($q, uuid, blTaHangerService) {
+module.exports = function($q, blTaHangerService) {
   'use strict';
 
   var service = {
@@ -13,7 +13,7 @@ module.exports = function($q, uuid, blTaHangerService) {
 
   function Aircraft() {
     this.description = '';
-    this.id = '';
+    this._id = '';
     this.isAvailable = false;
     this.name = '';
     this.manufacturer = '';
@@ -21,14 +21,16 @@ module.exports = function($q, uuid, blTaHangerService) {
     this.registrationId = '';
     this.year = '';
 
-    this.flights = {
+    this.flightStats = {
       booked: 0,
       completed: 0,
       inProgress: 0
     };
 
-    this.maintenance = {
-      engineHours: 0
+    this.maintenanceStats = {
+      engineHours: 0,
+      lastEngineOverhaul: null,
+      lastEngineOverhaulHours: 0
     };
 
     this.pics = {
@@ -45,8 +47,8 @@ module.exports = function($q, uuid, blTaHangerService) {
   function save(aircraft) {
     if (!aircraft || aircraft.constructor !== Aircraft) $q.reject('Save Aircraft Failured: Invalid aircraft');
 
-    aircraft.id = uuid.v4();
-
+    if(!aircraft.name) $q.reject('Save Aircraft Failured: Missing name'); 
+    
     if (!aircraft.pics.thumbnail) {
       aircraft.pics.thumbnail = require('./paperairplane.png');
     }

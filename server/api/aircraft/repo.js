@@ -1,5 +1,5 @@
 var aircraft = require('./model.js');
-  
+
 var repo = function() {
   return {
     load: load,
@@ -72,7 +72,13 @@ var repo = function() {
           reject(err);
         }
         else {
-          resolve(data);
+          if (!data) {
+            resolve(null);
+            return;
+          }
+
+          // Return as an array of 1 to be consistent
+          resolve([data]);
         }
       });
     });

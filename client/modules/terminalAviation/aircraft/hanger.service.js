@@ -13,7 +13,7 @@ module.exports = function($q) {
   /////
   
   function addAircraft(aircraft) {
-    if(!aircraft || !aircraft.id) return $q.reject('Invalid aircraft.');
+    if(!aircraft || !aircraft.name) return $q.reject('Invalid aircraft.');
     
     // TODO: Ensure aircraft isn't already in the hanger...
     _aircraft.push(aircraft);

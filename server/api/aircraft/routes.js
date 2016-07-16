@@ -4,12 +4,13 @@ var _ = require('lodash'),
   repo = require('./repo.js'),
   router = express.Router();
 
-router.get('/aircraft', function(req, res) {
+router.get('/aircraft', function(req, res, next) {
   repo.load(null)
     .then(onSuccess)
     .catch(onFailure);
 
-  function onFailure() {
+  function onFailure(err) {
+    if (err) return next(err);
     res.status(404).json(null);
   }
 
@@ -18,17 +19,18 @@ router.get('/aircraft', function(req, res) {
   }
 });
 
-router.get('/aircraft/:id', function(req, res) {
-  if(!req.params.id) {
+router.get('/aircraft/:id', function(req, res, next) {
+  if (!req.params.id) {
     res.status(412).json(null);
     return;
   }
-  
+
   repo.load(req.params.id)
     .then(onSuccess)
     .catch(onFailure);
 
-  function onFailure() {
+  function onFailure(err) {
+    if (err) return next(err);
     res.status(404).json(null);
   }
 
@@ -37,22 +39,23 @@ router.get('/aircraft/:id', function(req, res) {
   }
 });
 
-router.post('/aircraft', function(req, res) {
-  if(!req.body.aircraft) {
+router.post('/aircraft', function(req, res, next) {
+  if (!req.body.aircraft) {
     res.status(412).json(null);
     return;
   }
-  
+
   var item = req.body.aircraft;
   var model = new aircraft();
 
   _.assign(model, item);
-  
+
   repo.save(model)
     .then(onSuccess)
     .catch(onFailure);
 
-  function onFailure() {
+  function onFailure(err) {
+    if (err) return next(err);
     res.status(500).json(null);
   }
 
@@ -61,20 +64,21 @@ router.post('/aircraft', function(req, res) {
   }
 });
 
-router.put('/aircraft/:id', function(req, res) {
-  if(!req.params.id) {
+router.put('/aircraft/:id', function(req, res, next) {
+  if (!req.params.id) {
     res.status(412).json(null);
     return;
   }
-  
+
   var item = req.body.aircraft;
-  
+
   repo.load(req.params.id)
     .then(saveAircraft)
     .then(onSuccess)
     .catch(onFailure);
 
-  function onFailure() {
+  function onFailure(err) {
+    if (err) return next(err);
     res.status(500).json(null);
   }
 
@@ -88,12 +92,12 @@ router.put('/aircraft/:id', function(req, res) {
   }
 });
 
-router.delete('/aircraft/:id', function(req, res) {
-  if(!req.params.id) {
+router.delete('/aircraft/:id', function(req, res, next) {
+  if (!req.params.id) {
     res.status(412).json(null);
     return;
   }
-  
+
   repo.load(req.params.id)
     .then(deleteAircraft)
     .then(onSuccess)
@@ -103,7 +107,8 @@ router.delete('/aircraft/:id', function(req, res) {
     return repo.remove(model);
   }
 
-  function onFailure() {
+  function onFailure(err) {
+    if (err) return next(err);
     res.status(404).json(null);
   }
 
