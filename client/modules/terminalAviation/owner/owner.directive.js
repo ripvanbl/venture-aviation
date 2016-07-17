@@ -18,6 +18,13 @@ module.exports = function(blTaHangerService) {
     vm.selectedAircraft = null;
     vm.selectAircraft = selectAircraft;
     
+    activate();
+    
+    function activate() {
+      blTaHangerService.loadAircraft().then(function(){
+        vm.aircraft = blTaHangerService.aircraft;
+      });
+    }
     
     function selectAircraft(aircraft) {
       vm.selectedAircraft = aircraft;

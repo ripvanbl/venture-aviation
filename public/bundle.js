@@ -43420,16 +43420,19 @@
 /***/ function(module, exports) {
 
 	/*@ngInject*/
-	module.exports = function($q) {
+	module.exports = function($q, blTaAircraftDataService) {
 	  'use strict';
 	  
 	  var _aircraft = [];
 	  
-	  return {
+	  var service = {
 	    get aircraft() { return _aircraft; },
 	    addAircraft: addAircraft,
-	    findAircraft: findAircraft
+	    findAircraft: findAircraft,
+	    loadAircraft: loadAircraft
 	  };
+	  
+	  return service;
 	  
 	  /////
 	  
@@ -43449,8 +43452,16 @@
 	    
 	    return _aircraft;
 	  }
+	  
+	  function loadAircraft() {
+	    return blTaAircraftDataService.load().then(function(aircraft){
+	      if(Array.isArray(aircraft)) {
+	        _aircraft = aircraft;
+	      }
+	    });
+	  }
 	};
-	module.exports.$inject = ["$q"];
+	module.exports.$inject = ["$q", "blTaAircraftDataService"];
 
 /***/ },
 /* 32 */
@@ -43659,6 +43670,13 @@
 	    vm.selectedAircraft = null;
 	    vm.selectAircraft = selectAircraft;
 	    
+	    activate();
+	    
+	    function activate() {
+	      blTaHangerService.loadAircraft().then(function(){
+	        vm.aircraft = blTaHangerService.aircraft;
+	      });
+	    }
 	    
 	    function selectAircraft(aircraft) {
 	      vm.selectedAircraft = aircraft;
@@ -43671,7 +43689,7 @@
 /* 42 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"owner\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-md-8\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">Aircraft Dashboard</div>\n        <div class=\"panel-body\" data-ng-if=\"!vm.selectedAircraft\">\n          <p>Select an aircraft from your hanger or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n        </div>\n        <div class=\"panel-body\" data-ng-if=\"vm.selectedAircraft\">\n          <h2>{{vm.selectedAircraft.name}}</h2>\n          <p>{{vm.selectedAircraft.description}}</p>\n\n          <div class=\"list-group\">\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.flights.booked}}</span> Upcoming Flights\n            </a>\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.flights.completed}}</span> Completed Flights\n            </a>\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.maintenance.engineHours}}</span> Engine Hours\n            </a>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">Hanger</div>\n        <div class=\"panel-body\">\n          <p>Select an aircraft to get more detailed information or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n          <div class=\"row\">\n            <div class=\"col-xs-12 col-sm-6\" data-ng-repeat=\"item in vm.aircraft track by $index\">\n              <div class=\"thumbnail\">\n                <img alt=\"{{item.name}}\" title=\"{{item.name}}\" data-ng-src=\"{{item.pics.thumbnail}}\" />\n                <div class=\"caption\">\n                  <h3>{{item.name}}</h3>\n                  <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\" data-ng-click=\"vm.selectAircraft(item)\">Select</a></p>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+	module.exports = "<div class=\"owner\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-md-8\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">Aircraft Dashboard</div>\n        <div class=\"panel-body\" data-ng-if=\"!vm.selectedAircraft\">\n          <p>Select an aircraft from your hanger or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n        </div>\n        <div class=\"panel-body\" data-ng-if=\"vm.selectedAircraft\">\n          <h2>{{vm.selectedAircraft.name}}</h2>\n          <p>{{vm.selectedAircraft.description}}</p>\n\n          <div class=\"list-group\">\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.booked}}</span> Upcoming Flights\n            </a>\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.completed}}</span> Completed Flights\n            </a>\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.maintenanceStats.engineHours}}</span> Engine Hours\n            </a>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">Hanger</div>\n        <div class=\"panel-body\">\n          <p>Select an aircraft to get more detailed information or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n          <div class=\"row\">\n            <div class=\"col-xs-12 col-sm-6\" data-ng-repeat=\"item in vm.aircraft track by $index\">\n              <div class=\"thumbnail\">\n                <img alt=\"{{item.name}}\" title=\"{{item.name}}\" data-ng-src=\"{{item.pics.thumbnail}}\" />\n                <div class=\"caption\">\n                  <h3>{{item.name}}</h3>\n                  <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\" data-ng-click=\"vm.selectAircraft(item)\">Select</a></p>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }
 /******/ ]);

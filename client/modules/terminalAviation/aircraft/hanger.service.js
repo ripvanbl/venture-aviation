@@ -1,14 +1,17 @@
 /*@ngInject*/
-module.exports = function($q) {
+module.exports = function($q, blTaAircraftDataService) {
   'use strict';
   
   var _aircraft = [];
   
-  return {
+  var service = {
     get aircraft() { return _aircraft; },
     addAircraft: addAircraft,
-    findAircraft: findAircraft
+    findAircraft: findAircraft,
+    loadAircraft: loadAircraft
   };
+  
+  return service;
   
   /////
   
@@ -27,5 +30,13 @@ module.exports = function($q) {
     // TODO: Build a filter which can parse the properties of the aircraft to filter the aircraft in the hanger...
     
     return _aircraft;
+  }
+  
+  function loadAircraft() {
+    return blTaAircraftDataService.load().then(function(aircraft){
+      if(Array.isArray(aircraft)) {
+        _aircraft = aircraft;
+      }
+    });
   }
 };

@@ -17,14 +17,13 @@ describe('terminalAviation/aircraft/data.service', function() {
     
     it('should call the endpoint for a single aircraft when an id is supplied', function() {
       var id = 'a';
-      var result;
       
       $httpBackend.expectRoute('GET', config.urls.load.byId)
                   .respond(function(method, url, data, headers, params) {
                     return [200, _.find(aircraftListMock, {'_id': params.id})];
                   });
       
-      result = target.load(id).then(doAssert);
+      target.load(id).then(doAssert);
       $httpBackend.flush();
       
       function doAssert(aircraft) {
