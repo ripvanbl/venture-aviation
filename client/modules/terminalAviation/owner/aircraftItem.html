@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Aircraft Dashboard</div>
+  <div class="panel-body" data-ng-if="!vm.selectedAircraft">
+    <p>Select an aircraft from your hanger or <a ui-sref="ta.aircraft.addModal">add a new aircraft</a>.</p>
+  </div>
+  <div class="panel-body" data-ng-if="vm.selectedAircraft">
+    <h2>{{vm.selectedAircraft.name}}</h2>
+    <p>{{vm.selectedAircraft.description}}</p>
+
+    <div class="list-group">
+      <a href="#" class="list-group-item">
+        <span class="pull-right">{{vm.selectedAircraft.flightStats.booked}}</span> Upcoming Flights
+      </a>
+      <a href="#" class="list-group-item">
+        <span class="pull-right">{{vm.selectedAircraft.flightStats.completed}}</span> Completed Flights
+      </a>
+      <a href="#" class="list-group-item">
+        <span class="pull-right">{{vm.selectedAircraft.maintenanceStats.engineHours}}</span> Engine Hours
+      </a>
+    </div>
+  </div>
+</div>

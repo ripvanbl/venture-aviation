@@ -43610,7 +43610,7 @@
 /* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"intro\">\n  <div class=\"jumbotron\">\n    <h1>Aircraft Owners</h1>\n    <p>Are you looking to maximize your investment in that flying bucket-o-bolts?</p>\n    <div>\n      <a data-ui-sref=\"ta.owner\" class=\"btn btn-primary btn-lg\"><i class=\"fa fa-money\" aria-hidden=\"true\"></i> Learn More</a>\n    </div>\n  </div>\n\n  <div class=\"row\">\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">Mechanics / Maintenance Companies</h3>\n        </div>\n        <div class=\"panel-body\">\n          <p>Independent aircraft mechanics and aircraft maintenance companies will be able to view and bid on requests for repair.</p>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">Aircraft Management</h3>\n        </div>\n        <div class=\"panel-body\">\n          <p>Aircraft management companies will be able to post offers and view / bid on requests for aircraft management.</p>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">Charter Companies</h3>\n        </div>\n        <div class=\"panel-body\">\n          <p>Charter companies will be able to post offers for service and view / bid on requests for charter opportunities.</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+	module.exports = "<div class=\"intro\">\n  <div class=\"jumbotron\">\n    <h1>Aircraft Owners</h1>\n    <p>Are you looking to maximize your investment in that flying bucket-o-bolts?</p>\n    <div>\n      <a data-ui-sref=\"ta.owner.index\" class=\"btn btn-primary btn-lg\"><i class=\"fa fa-money\" aria-hidden=\"true\"></i> Learn More</a>\n    </div>\n  </div>\n\n  <div class=\"row\">\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">Mechanics / Maintenance Companies</h3>\n        </div>\n        <div class=\"panel-body\">\n          <p>Independent aircraft mechanics and aircraft maintenance companies will be able to view and bid on requests for repair.</p>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">Aircraft Management</h3>\n        </div>\n        <div class=\"panel-body\">\n          <p>Aircraft management companies will be able to post offers and view / bid on requests for aircraft management.</p>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">Charter Companies</h3>\n        </div>\n        <div class=\"panel-body\">\n          <p>Charter companies will be able to post offers for service and view / bid on requests for charter opportunities.</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ },
 /* 39 */
@@ -43632,7 +43632,7 @@
 
 /***/ },
 /* 40 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/*@ngInject*/
 	module.exports = function($stateProvider) {
@@ -43640,8 +43640,20 @@
 	  
 	  $stateProvider
 	    .state('ta.owner', {
+	      abstract: true,
 	      url: '/owner',
 	      template: '<div data-bl-ta-owner=""></div>'
+	    })
+	    .state('ta.owner.index', {
+	      url: '',
+	      views: {
+	        'view0': {
+	          template: __webpack_require__(44)
+	        },
+	        'view1': {
+	          template: __webpack_require__(45)
+	        }
+	      }
 	    });
 	};
 	module.exports.$inject = ["$stateProvider"];
@@ -43689,7 +43701,20 @@
 /* 42 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"owner\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-md-8\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">Aircraft Dashboard</div>\n        <div class=\"panel-body\" data-ng-if=\"!vm.selectedAircraft\">\n          <p>Select an aircraft from your hanger or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n        </div>\n        <div class=\"panel-body\" data-ng-if=\"vm.selectedAircraft\">\n          <h2>{{vm.selectedAircraft.name}}</h2>\n          <p>{{vm.selectedAircraft.description}}</p>\n\n          <div class=\"list-group\">\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.booked}}</span> Upcoming Flights\n            </a>\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.completed}}</span> Completed Flights\n            </a>\n            <a href=\"#\" class=\"list-group-item\">\n              <span class=\"pull-right\">{{vm.selectedAircraft.maintenanceStats.engineHours}}</span> Engine Hours\n            </a>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-md-4\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">Hanger</div>\n        <div class=\"panel-body\">\n          <p>Select an aircraft to get more detailed information or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n          <div class=\"row\">\n            <div class=\"col-xs-12 col-sm-6\" data-ng-repeat=\"item in vm.aircraft track by $index\">\n              <div class=\"thumbnail\">\n                <img alt=\"{{item.name}}\" title=\"{{item.name}}\" data-ng-src=\"{{item.pics.thumbnail}}\" />\n                <div class=\"caption\">\n                  <h3>{{item.name}}</h3>\n                  <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\" data-ng-click=\"vm.selectAircraft(item)\">Select</a></p>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+	module.exports = "<div class=\"owner\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-md-8\" data-ui-view=\"view0\"></div>\n    <div class=\"col-xs-12 col-md-4\" data-ui-view=\"view1\"></div>\n  </div>\n</div>";
+
+/***/ },
+/* 43 */,
+/* 44 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">Aircraft Dashboard</div>\n  <div class=\"panel-body\" data-ng-if=\"!vm.selectedAircraft\">\n    <p>Select an aircraft from your hanger or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n  </div>\n  <div class=\"panel-body\" data-ng-if=\"vm.selectedAircraft\">\n    <h2>{{vm.selectedAircraft.name}}</h2>\n    <p>{{vm.selectedAircraft.description}}</p>\n\n    <div class=\"list-group\">\n      <a href=\"#\" class=\"list-group-item\">\n        <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.booked}}</span> Upcoming Flights\n      </a>\n      <a href=\"#\" class=\"list-group-item\">\n        <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.completed}}</span> Completed Flights\n      </a>\n      <a href=\"#\" class=\"list-group-item\">\n        <span class=\"pull-right\">{{vm.selectedAircraft.maintenanceStats.engineHours}}</span> Engine Hours\n      </a>\n    </div>\n  </div>\n</div>";
+
+/***/ },
+/* 45 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">Hanger</div>\n  <div class=\"panel-body\">\n    <p>Select an aircraft to get more detailed information or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-sm-6\" data-ng-repeat=\"item in vm.aircraft track by $index\">\n        <div class=\"thumbnail\">\n          <img alt=\"{{item.name}}\" title=\"{{item.name}}\" data-ng-src=\"{{item.pics.thumbnail}}\" />\n          <div class=\"caption\">\n            <h3>{{item.name}}</h3>\n            <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\" data-ng-click=\"vm.selectAircraft(item)\">Select</a></p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }
 /******/ ]);
