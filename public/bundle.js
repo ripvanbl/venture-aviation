@@ -43627,7 +43627,7 @@
 	  angular
 	    .module('app.ta.owner', [uirouter, aircraft.name])
 	    .config(routes)
-	    .directive('blTaOwner', __webpack_require__(41));
+	    .directive('blTaOwner', __webpack_require__(43));
 	  
 
 /***/ },
@@ -43648,10 +43648,10 @@
 	      url: '',
 	      views: {
 	        'view0': {
-	          template: __webpack_require__(44)
+	          template: __webpack_require__(41)
 	        },
 	        'view1': {
-	          template: __webpack_require__(45)
+	          template: __webpack_require__(42)
 	        }
 	      }
 	    });
@@ -43660,6 +43660,18 @@
 
 /***/ },
 /* 41 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">Aircraft Dashboard</div>\n  <div class=\"panel-body\" data-ng-if=\"!vm.selectedAircraft\">\n    <p>Select an aircraft from your hanger or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n  </div>\n  <div class=\"panel-body\" data-ng-if=\"vm.selectedAircraft\">\n    <h2>{{vm.selectedAircraft.name}}</h2>\n    <p>{{vm.selectedAircraft.description}}</p>\n\n    <div class=\"list-group\">\n      <a href=\"#\" class=\"list-group-item\">\n        <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.booked}}</span> Upcoming Flights\n      </a>\n      <a href=\"#\" class=\"list-group-item\">\n        <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.completed}}</span> Completed Flights\n      </a>\n      <a href=\"#\" class=\"list-group-item\">\n        <span class=\"pull-right\">{{vm.selectedAircraft.maintenanceStats.engineHours}}</span> Engine Hours\n      </a>\n    </div>\n  </div>\n</div>";
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">Hanger</div>\n  <div class=\"panel-body\">\n    <p>Select an aircraft to get more detailed information or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-sm-6\" data-ng-repeat=\"item in vm.aircraft track by $index\">\n        <div class=\"thumbnail\">\n          <img alt=\"{{item.name}}\" title=\"{{item.name}}\" data-ng-src=\"{{item.pics.thumbnail}}\" />\n          <div class=\"caption\">\n            <h3>{{item.name}}</h3>\n            <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\" data-ng-click=\"vm.selectAircraft(item)\">Select</a></p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+
+/***/ },
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*@ngInject*/
@@ -43667,7 +43679,7 @@
 	  'use strict';
 	  
 	  return {
-	    template: __webpack_require__(42),
+	    template: __webpack_require__(44),
 	    controller: controller, 
 	    controllerAs: 'vm',
 	    bindToController: true
@@ -43698,23 +43710,10 @@
 	module.exports.$inject = ["blTaHangerService"];
 
 /***/ },
-/* 42 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"owner\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-md-8\" data-ui-view=\"view0\"></div>\n    <div class=\"col-xs-12 col-md-4\" data-ui-view=\"view1\"></div>\n  </div>\n</div>";
-
-/***/ },
-/* 43 */,
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">Aircraft Dashboard</div>\n  <div class=\"panel-body\" data-ng-if=\"!vm.selectedAircraft\">\n    <p>Select an aircraft from your hanger or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n  </div>\n  <div class=\"panel-body\" data-ng-if=\"vm.selectedAircraft\">\n    <h2>{{vm.selectedAircraft.name}}</h2>\n    <p>{{vm.selectedAircraft.description}}</p>\n\n    <div class=\"list-group\">\n      <a href=\"#\" class=\"list-group-item\">\n        <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.booked}}</span> Upcoming Flights\n      </a>\n      <a href=\"#\" class=\"list-group-item\">\n        <span class=\"pull-right\">{{vm.selectedAircraft.flightStats.completed}}</span> Completed Flights\n      </a>\n      <a href=\"#\" class=\"list-group-item\">\n        <span class=\"pull-right\">{{vm.selectedAircraft.maintenanceStats.engineHours}}</span> Engine Hours\n      </a>\n    </div>\n  </div>\n</div>";
-
-/***/ },
-/* 45 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">Hanger</div>\n  <div class=\"panel-body\">\n    <p>Select an aircraft to get more detailed information or <a ui-sref=\"ta.aircraft.addModal\">add a new aircraft</a>.</p>\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-sm-6\" data-ng-repeat=\"item in vm.aircraft track by $index\">\n        <div class=\"thumbnail\">\n          <img alt=\"{{item.name}}\" title=\"{{item.name}}\" data-ng-src=\"{{item.pics.thumbnail}}\" />\n          <div class=\"caption\">\n            <h3>{{item.name}}</h3>\n            <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\" data-ng-click=\"vm.selectAircraft(item)\">Select</a></p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+	module.exports = "<div class=\"owner\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-md-8\" data-ui-view=\"view0\"></div>\n    <div class=\"col-xs-12 col-md-4\" data-ui-view=\"view1\"></div>\n  </div>\n</div>";
 
 /***/ }
 /******/ ]);

@@ -7,5 +7,11 @@ This repo is used to explore / keep my skills current with various web technolog
 ## Terminal Aviation
 Terminal Aviation is a fictional company, which owns and operates an online collaboration portal and marketplace. The goal is to connect aircraft owners with people looking to charter a flight.
 
-Copyright (c) 2012-2016 Brandon Lind
+
+## How to install and run
+- npm install
+- webpack
+- npm run start
+
+Copyright (c) 2012-2017 Brandon Lind
   
