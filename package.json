@@ -23,13 +23,12 @@
     "errorhandler": "1.4.3",
     "express": "4.13.4",
     "lodash": "4.13.1",
-    "mongodb": "2.1.16",
+    "mongodb": "2.2.19",
     "mongoose": "4.4.12",
     "node-uuid": "1.4.7"
   },
   "engines": {
-    "node": "4.4.3",
-    "npm": "2.15.1"
+    "node": "6.11.1"
   },
   "devDependencies": {
     "angular-mocks": "1.5.3",
