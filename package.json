@@ -23,7 +23,7 @@
     "errorhandler": "1.4.3",
     "express": "4.13.4",
     "mongodb": "2.2.19",
-    "mongoose": "4.4.12",
+    "mongoose": "5.7.6",
     "node-uuid": "1.4.7"
   },
   "engines": {
